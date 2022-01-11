@@ -6,28 +6,46 @@ class Solution {
             return res;
         }
         
-        int start = 0;
-        int end = 0;
+        Map<Character, Integer> map = new HashMap<>();
         
-        while(end - start + 1 <= p.length()) {
-            end++;
+        for(int i = 0; i < p.length(); i++) {
+            map.put(p.charAt(i), map.getOrDefault(p.charAt(i), 0) + 1);
         }
         
-        char[] charP = p.toCharArray();
+        int start = 0;
+        int end = 0;
+        int cnt = map.size();
         
-        Arrays.sort(charP);
-        
-        while(end <= s.length()) {
-            char[] charS = s.substring(start, end).toCharArray();
+        while(end < s.length()) {
+            char ch = s.charAt(end);
+            
+            if(map.containsKey(ch)) {
+                map.put(ch, map.get(ch) - 1);
                 
-            Arrays.sort(charS);
-                
-            if(Arrays.equals(charS, charP)) {
-                res.add(start);    
+                if(map.get(ch) == 0) {
+                    cnt--;
+                }
             }
             
-            start++;
             end++;
+            
+            while(cnt == 0) {
+                char ch2 = s.charAt(start);
+                
+                if(map.containsKey(ch2)) {
+                    map.put(ch2, map.get(ch2) + 1);
+                    
+                    if(map.get(ch2) > 0) {
+                        cnt++;
+                    }
+                }
+                
+                if(end - start == p.length()) {
+                    res.add(start);
+                }
+                
+                start++;
+            }
         }
         
         return res;
@@ -52,4 +70,17 @@ s 내에서 움직이는 두 개의 포인터를 만든다.
 
 time O(mlgm+mn) n == s.length, m == p.length
 space O(n)
+
+2.
+sliding window 사용
+map<char, int>에 p의 char들을 전부 집어넣는다. int는 해당 char의 등장 횟수
+cnt에 map size를 저장한다.
+end가 가리키는 char을 확인해서 map에 해당 char이 존재하면 value를 감소시킨다.
+value가 0이 될 때 cnt를 1 감소시킨다.
+cnt가 0이면 start를 본다.
+start가 가리키는 char을 확인해서 map에 집어넣는다.
+value가 0보다 클 때마다 cnt를 증가시킨다.
+
+time O(s + p)
+space O(s + p)
 */
