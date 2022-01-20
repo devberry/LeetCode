@@ -46,8 +46,8 @@ path가 완성될 때마다 결과 list에 추가한다.
 탐색이 끝나면 list에서 path를 꺼내서 int로 바꾼 뒤 모두 더한다.
 path를 수정할 때마다 backtracking 사용
 
-time O(n) n==노드의 갯수
-space O(n)
+time O(?)
+space O(?)
 
 class Solution {
     public int sumNumbers(TreeNode root) {
