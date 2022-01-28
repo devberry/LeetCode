@@ -40,7 +40,8 @@ sol
 주어진 n, bad의 범위가 굉장히 넓으므로 이분탐색을 떠올릴 수 있다.
 먼저 start를 1, end를 n으로 놓고
 loop:(start<=end)
-mid를 (n + 1) / 2로 설정한다.
+mid를 start + (end - start) / 2로 설정한다. -> 주어진 범위를 고려했을 때 (start + end) / 2로 하게 되었을 경우 
+overflow가 발생할 수 있으므로 이렇게 한다.
 isBadVersion(mid) -> false일 경우
     start = mid + 1
 true일 경우
