@@ -1,16 +1,16 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        for(int p = 0, i = 0; i < nums.length; i++) {
+        int cnt = 0;
+        
+        for(int i = 0; i < nums.length; i++) {
             if(nums[i] != 0) {
-                swap(nums, p++, i);
+                nums[cnt++] = nums[i];
             }
         }
-    }
-    
-    public void swap(int[] arr, int a, int b) {
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
+        
+        for(int i = cnt; i < nums.length; i++) {
+            nums[i] = 0;
+        }
     }
 }
 
@@ -56,6 +56,16 @@ p 2
 1 3 0 0 12
 i 4
 p 2
+
+time O(n)
+space O(1)
+
+3.
+nums를 돌면서 0이 아닌 원소를 만났을 때
+nums[cnt++] = nums[i]
+
+i = cnt, i < nums.length, i++
+nums[i] = 0
 
 time O(n)
 space O(1)
