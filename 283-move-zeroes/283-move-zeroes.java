@@ -1,22 +1,16 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        int[] temp = new int[nums.length];
-        int low = 0;
-        int high = temp.length - 1;
-        int i = 0;
-            
-        while(low <= high) {
-            if(nums[i] == 0) {
-                temp[high--] = nums[i];
-            } else {
-                temp[low++] = nums[i];
+        for(int p = 0, i = 0; i < nums.length; i++) {
+            if(nums[i] != 0) {
+                swap(nums, p++, i);
             }
-            i++;
         }
-        
-        for(int j = 0; j < temp.length; j++) {
-            nums[j] = temp[j];
-        }
+    }
+    
+    public void swap(int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
     }
 }
 
@@ -45,5 +39,24 @@ time O(n)
 space O(n)
     
 2.
+i는 배열 안에서 움직이고
+p는 0이 아닌 원소를 만났을 때만 증가
+0 1 0 3 12
+i 0
+p 0
+1 0 0 3 12
+i 1
+p 1
+1 0 0 3 12
+i 2
+p 1
+1 3 0 0 12
+i 3
+p 2
+1 3 0 0 12
+i 4
+p 2
 
+time O(n)
+space O(1)
 */
