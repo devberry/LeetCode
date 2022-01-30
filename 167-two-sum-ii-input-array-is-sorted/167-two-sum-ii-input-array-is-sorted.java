@@ -1,35 +1,19 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int[] res = new int[2];
+        int low = 0;
+        int high = numbers.length - 1;
         
-        for(int i = 0; i < numbers.length; i++) {
-            int j = i + 1;
-            res[0] = i + 1;
-            
-            int bs = binarySearch(numbers, target - numbers[i], j, numbers.length - 1);
-            if(bs != -1) {
-                res[1] = bs + 1;
+        while(low < high) {
+            if(numbers[low] + numbers[high] == target) {
                 break;
-            }
-        }
-        
-        return res;
-    }
-    
-    public int binarySearch(int[] arr, int target, int left, int right) {
-        while(left <= right) {
-            int mid = left + (right - left) / 2;
-            
-            if(arr[mid] > target) {
-                right = mid - 1;
-            } else if(arr[mid] < target) {
-                left = mid + 1;
+            } else if(numbers[low] + numbers[high] < target) {
+                low++;
             } else {
-                return mid;
+                high--;
             }
         }
         
-        return -1;
+        return new int[] {low + 1, high + 1};
     }
 }
 
@@ -53,5 +37,18 @@ i가 가리키는 값을 target에서 빼서 newTarget을 만든다.
 배열을 만들어서 반환
 
 time O(nlogn)
+space O(1)
+
+2.
+low = 0
+high = numbers.length - 1
+numbers[low] + numbers[high] == target
+-> return low, high
+< target
+low++
+> target
+high--
+
+time O(n)
 space O(1)
 */
