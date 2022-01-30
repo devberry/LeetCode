@@ -14,7 +14,6 @@ class Solution {
             i++;
         }
         
-        
         for(int j = 0; j < temp.length; j++) {
             nums[j] = temp[j];
         }
