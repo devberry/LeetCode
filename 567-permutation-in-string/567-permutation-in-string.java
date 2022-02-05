@@ -27,16 +27,18 @@ class Solution {
                     cnt--;
                 }
             }
-            //window의 크기가 s1의 길이와 같아졌을 경우
+            //s1의 char이 모두 등장했을 때
             while(cnt == 0) {
+                //window의 크기가 s1의 길이와 같아졌을 경우
                 if(end - start + 1 == s1.length()) {
                     return true;
                 }
                 
                 char c2 = s2.charAt(start);
-                
+                //문제 조건을 만족하지 못한 경우 포함하지 않게 되는 char의 등장 횟수를 다시 증가시킴.
                 if(map.containsKey(c2)) {
                     map.put(c2, map.get(c2) + 1);
+                    //등장 횟수가 다시 양수가 되었다 -> window 내에서 등장 횟수를 만족시키지 못했다는 뜻이므로 cnt++
                     if(map.get(c2) > 0) {
                         cnt++;
                     }
