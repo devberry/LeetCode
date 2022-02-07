@@ -3,7 +3,7 @@ class Solution {
 	if(n == 1 || connections.length < n -1) 
 		return - 1;
 	
-	ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>();
+	List<List<Integer>> adj = new ArrayList<List<Integer>>();
 	
 	for(int i = 0; i < n; i++) {
 		adj.add(new ArrayList<>());
@@ -25,7 +25,7 @@ class Solution {
     return cnt - 1;
 }
 
-    public int bfs(int i, ArrayList<ArrayList<Integer>> adj, boolean[] visited) {
+    public int bfs(int i, List<List<Integer>> adj, boolean[] visited) {
         //방문한 컴퓨터는 bfs 수행 x
 	    if(visited[i] == true) {
             return 0;
