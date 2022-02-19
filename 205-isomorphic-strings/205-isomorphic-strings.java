@@ -7,12 +7,14 @@ class Solution {
             char tempS = s.charAt(i);
             char tempT = t.charAt(i);
         
+            //tempS가 매핑된 적이 있으면
             if(sDict[tempS] != '\0') {
+                //tempT가 매핑된 적이 있는지 확인
                 if(tDict[tempT] != tempS) {
                     return false;
                 }
-            } else {
-                //No two characters may map to the same character --> 이 조건 때문에 필요
+            } else { //tempS가 매핑된 적이 없으면
+                //tempT가 매핑된 적이 있는지 확인(No two characters may map to the same character --> 이 조건 때문에 필요)
                 if(tDict[tempT] != '\0') {
                     return false;
                 }
