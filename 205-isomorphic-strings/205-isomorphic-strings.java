@@ -8,10 +8,11 @@ class Solution {
             char tempT = t.charAt(i);
         
             if(sDict[tempS] != '\0') {
-                if(sDict[tempS] != tempT && tDict[tempT] != tempS) {
+                if(tDict[tempT] != tempS) {
                     return false;
                 }
             } else {
+                //No two characters may map to the same character --> 이 조건 때문에 필요
                 if(tDict[tempT] != '\0') {
                     return false;
                 }
