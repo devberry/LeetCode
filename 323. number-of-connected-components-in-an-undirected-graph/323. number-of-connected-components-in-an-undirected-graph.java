@@ -16,6 +16,7 @@ res return
 time O(n+mlogn) n==input n, m==num of find calc
 space O(n)
 */
+
 class Solution {
 	public int numOfConnectedComponent(int n, int[][] edges) {
 		if(n == 1)
