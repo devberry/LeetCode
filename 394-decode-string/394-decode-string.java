@@ -63,4 +63,7 @@ sub1 {
         "cc"
     }
 }
+
+time O(n) n==s.length
+space O(n)
 */
